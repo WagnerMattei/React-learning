@@ -12,7 +12,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import { mailFolderListItems, otherMailFolderListItems } from './tilesData';
+import { MailFolderListItems, OtherMailFolderListItems } from './tilesData';
 import Routes from '../../routes.jsx'
 
 const drawerWidth = 240;
@@ -82,20 +82,24 @@ const styles = theme => ({
   },
 });
 
-class MiniDrawer extends React.Component {
+class MiniDrawer extends React.Component
+{
   state = {
     open: false,
   };
 
-  handleDrawerOpen = () => {
+  handleDrawerOpen = () =>
+  {
     this.setState({ open: true });
   };
 
-  handleDrawerClose = () => {
+  handleDrawerClose = () =>
+  {
     this.setState({ open: false });
   };
 
-  render() {
+  render()
+  {
     const { classes, theme } = this.props;
 
     return (
@@ -131,13 +135,16 @@ class MiniDrawer extends React.Component {
             </IconButton>
           </div>
           <Divider />
-          <List>{mailFolderListItems}</List>
+          <List>
+            <MailFolderListItems />
+          </List>
           <Divider />
-          <List>{otherMailFolderListItems}</List>
+          <List><OtherMailFolderListItems />
+          </List>
         </Drawer>
         <main className={classes.content}>
           <div className={classes.toolbar} />
-          
+
           <Routes />
 
         </main>
