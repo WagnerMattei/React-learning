@@ -4,7 +4,7 @@ const mongoose = restful.mongoose;
 const userSchema = new mongoose.Schema({
   created: { type: Date, default: Date.now, required: true },
   updated: { type: Date, default: Date.now, required: false  },
-  nombre: { type: String, required: true },
+  nombre: { type: String, required: [true, 'El nombre es requerido'] },
   password: { type: String, required: false  },
   email: { type: String, required: false },
   lastLogin: { type: Date, required: false },
@@ -17,8 +17,11 @@ const userSchema = new mongoose.Schema({
 const asignaturaSchema = new mongoose.Schema({
   created: { type: Date, default: Date.now, required: true },
   updated: { type: Date, default: Date.now, required: false  },
-  nombre: { type: String, required: true },
-  cargaHoraria: { type: Number, min: 0, required: true },
+  nombre: { type: String, required: [true, 'El nombre de la asignatura es requerido'] },
+  creditos: { type: Number, min: 0, required: [true, 'La cantidad de creditos es requerida'] },
+  cargaHoraria: { type: Number, default: function() {
+    return this.asignaturaSchema.creditos * 18;
+  }},
   profesor: {userSchema},
   valor: { type: Number},
 })
@@ -28,10 +31,10 @@ const paisSchema = new mongoose.Schema({
 })
 
 const alumnoSchema = new mongoose.Schema({
- // user: {userSchema},
-  cedula: { type: String, required: true},
-//  nacionalidad: {paisSchema},
-  formaPago: { type: String, required: true, enum: ['AL_CONTADO', 'BECA', 'FONDO_ROTATIVO']}, 
+  user: {userSchema},
+  cedula: { type: String, required: [true, 'La cedula es requerida']},
+  nacionalidad: {paisSchema},
+  formaPago: { type: String, required: [true, 'La forma de pago es requerida'], enum: ['AL_CONTADO', 'BECA', 'FONDO_ROTATIVO']}, 
   situacion: { type: String, required: false, enum: ['CONCLUIDO', 'EN_CURSO', 'TRANCADO']}, 
   nombrePadre: { type: String, required: false}, 
   nombreMadre: { type: String, required: false}, 
@@ -41,9 +44,9 @@ const alumnoSchema = new mongoose.Schema({
   dataInicioMatricula: { type: Date, required: false, default: Date.now}, 
   dataFinalMatricula: { type: Date, required: false}, 
   dataFinalMatricula: { type: Date, required: false},
-  sexo: { type: String, required: true, enum: ['MASCULINO', 'FEMENINO']},
+  sexo: { type: String, required: [true, 'El sexo es requerido'], enum: ['MASCULINO', 'FEMENINO']},
   observacion: { type: String, required: false},
-//  asignaturas: [asignaturaSchema]
+  asignaturas: [asignaturaSchema]
 })
 
 module.exports = restful.model("Alumno", alumnoSchema);
