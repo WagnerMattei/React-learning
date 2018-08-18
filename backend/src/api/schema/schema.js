@@ -20,8 +20,7 @@ const asignaturaSchema = new mongoose.Schema({
   nombre: { type: String, required: true },
   cargaHoraria: { type: Number, min: 0, required: true },
   profesor: {userSchema},
-  valor: { type: Number, default: cargaHoraria * 18},
-  alumnos: [alumnoSchema]
+  valor: { type: Number},
 })
 
 const paisSchema = new mongoose.Schema({
@@ -29,9 +28,9 @@ const paisSchema = new mongoose.Schema({
 })
 
 const alumnoSchema = new mongoose.Schema({
-  user: {userSchema},
+ // user: {userSchema},
   cedula: { type: String, required: true},
-  nacionalidad: {paisSchema},
+//  nacionalidad: {paisSchema},
   formaPago: { type: String, required: true, enum: ['AL_CONTADO', 'BECA', 'FONDO_ROTATIVO']}, 
   situacion: { type: String, required: false, enum: ['CONCLUIDO', 'EN_CURSO', 'TRANCADO']}, 
   nombrePadre: { type: String, required: false}, 
@@ -44,7 +43,7 @@ const alumnoSchema = new mongoose.Schema({
   dataFinalMatricula: { type: Date, required: false},
   sexo: { type: String, required: true, enum: ['MASCULINO', 'FEMENINO']},
   observacion: { type: String, required: false},
-  asignaturas: [asignaturaSchema]
+//  asignaturas: [asignaturaSchema]
 })
 
 module.exports = restful.model("Alumno", alumnoSchema);
