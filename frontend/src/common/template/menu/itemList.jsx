@@ -12,7 +12,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 export default props => (
   <div>
     <Tooltip title="Dashboard" placement="right">
-      <ListItem button>
+      <ListItem component={'a'} href="/#/" button>
         <ListItemIcon>
           <DashboardIcon />
         </ListItemIcon>
@@ -20,7 +20,7 @@ export default props => (
       </ListItem>
     </Tooltip>
     <Tooltip title="Profesores" placement="right">
-      <ListItem button>
+      <ListItem component={'a'} href="/#/profesores" button>
         <ListItemIcon>
           <PeoplesIcon />
         </ListItemIcon>
@@ -28,7 +28,7 @@ export default props => (
       </ListItem>
     </Tooltip>
     <Tooltip title="Asignaturas" placement="right">
-      <ListItem button>
+      <ListItem component={'a'} href="/#/asignaturas" button>
         <ListItemIcon>
           <LibraryBooksIcon />
         </ListItemIcon>
@@ -36,7 +36,7 @@ export default props => (
       </ListItem>
     </Tooltip>
     <Tooltip title="Asignaturas" placement="right">
-      <ListItem button>
+      <ListItem component={'a'} href="/#/alumnos" button>
         <ListItemIcon>
           <ContactsIcon />
         </ListItemIcon>

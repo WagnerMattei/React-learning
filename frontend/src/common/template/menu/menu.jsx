@@ -16,6 +16,8 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import Itens from './itemList';
 import Footer from '../footer/footer'
 import If from '../../utils/if'
+import Routes from '../../../main/routes'
+
 const drawerWidth = 240;
 
 const styles = theme => ({
@@ -137,7 +139,7 @@ class MiniDrawer extends React.Component
             </IconButton>
           </div>
           <Divider />
-          <List>
+          <List component="nav">
             <Itens />
             <If condition={this.state.open}>
               <Footer />
@@ -149,7 +151,7 @@ class MiniDrawer extends React.Component
           <div className={classes.toolbar} />
 
           <div className="routes-content">
-            <h1>Content</h1>
+            <Routes />
           </div>
         </main>
       </div>

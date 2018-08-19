@@ -1,7 +1,12 @@
 import React from 'react';
+import PageTitle from '../../common/template/texts/page-title'
 
-export default class Alumnos extends React.Component{
-    render(){
-        <h1>Dashboard Work</h1>
+export default class Alumnos extends React.Component
+{
+    render()
+    {
+        return (
+            <PageTitle text={'Visión general'}/>
+        )
     }
 }
