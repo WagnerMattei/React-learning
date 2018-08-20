@@ -49,4 +49,9 @@ const alumnoSchema = new mongoose.Schema({
   asignaturas: [asignaturaSchema]
 })
 
-module.exports = restful.model("Alumno", alumnoSchema);
+module.exports = {
+  alumno: restful.model("Alumno", alumnoSchema),
+  pais: restful.model("Pais", paisSchema),
+  usuario: restful.model("Usuario", userSchema),
+  asignatura: restful.model("Asignatura", asignaturaSchema),
+}
