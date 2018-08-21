@@ -19,9 +19,7 @@ const asignaturaSchema = new mongoose.Schema({
   updated: { type: Date, default: Date.now, required: false  },
   nombre: { type: String, required: [true, 'El nombre de la asignatura es requerido'] },
   creditos: { type: Number, min: 0, required: [true, 'La cantidad de creditos es requerida'] },
-  cargaHoraria: { type: Number, default: function() {
-    return this.asignaturaSchema.creditos * 18;
-  }},
+  cargaHoraria: { type: Number },
   profesor: {userSchema},
   valor: { type: Number},
 })

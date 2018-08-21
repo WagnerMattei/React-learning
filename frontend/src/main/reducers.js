@@ -1,9 +1,8 @@
-/* import { combineReducers } from 'redux'
+import {combineReducers} from 'redux'
+import DashboardReducer from '../views/dashboard/dashboardReducer'
 
 const rootReducer = combineReducers({
-    dashboard: () => ({
-        count: {alumnos: 3, asignaturas: 40}
-    })
+    dashboard: DashboardReducer
 })
 
-export default rootReducer; */
+export default rootReducer;
