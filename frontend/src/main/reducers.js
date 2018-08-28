@@ -1,8 +1,7 @@
 import {combineReducers} from 'redux'
-import DashboardReducer from '../views/dashboard/dashboardReducer'
-
+const INITIAL_STATE = {count: {alumnosCount: 0, asignaturasCount: 0}}
 const rootReducer = combineReducers({
-    dashboard: DashboardReducer
+    dashboard: () => INITIAL_STATE
 })
 
 export default rootReducer;

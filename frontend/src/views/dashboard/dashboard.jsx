@@ -1,22 +1,29 @@
-import React from 'react';
-import PageTitle from '../../common/template/texts/page-title'
-import Card from '../../common/template/card/card'
 import Grid from '@material-ui/core/Grid';
-import Row from '../../common/template/row/row'
-import {connect} from 'react-redux';
-import { bindActionCreators } from 'redux'
-import { getCount } from './dashboardActions'
+import React from 'react';
+import Card from '../../common/template/card/card';
+import Row from '../../common/template/row/row';
+import PageTitle from '../../common/template/texts/page-title';
+import axios from 'axios'
 
-class Dashboard extends React.Component
+const BASE_URL = 'http://localhost:3003/api'
+
+export default class Dashboard extends React.Component
 {
+    constructor(props) {
+        super(props)
+        this.state = {alumnosCount: 0, asignaturasCount: 0}
+    }
+
     componentWillMount() 
     {
-        this.props.getCount()
+        axios.get(`${BASE_URL}/asignaturas/count`)
+            .then(resp => this.setState({asignaturasCount: resp.data.value}))
+        axios.get(`${BASE_URL}/alumnos/count`)
+            .then(resp => this.setState({alumnosCount: resp.data.value}))
     }
     render()
     {
-        console.log(this.props.count)
-        const {alumnosCount, asignaturasCount} = this.props.count
+        const {alumnosCount, asignaturasCount} = this.state
         return (
             <div>
                 <PageTitle text={'Visión general'} />
@@ -34,8 +41,3 @@ class Dashboard extends React.Component
         )
     }
 }
-
-const mapStateToProps = state => ({count: state.dashboard.count})
-const mapDispatchToProps = dispatch => bindActionCreators({getCount}, dispatch)
-
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard) 

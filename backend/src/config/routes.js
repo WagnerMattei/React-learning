@@ -10,9 +10,9 @@ module.exports = function(server) {
   const asignaturaService = require("../api/schema/asignaturaService");
   asignaturaService.register(router, "/asignaturas");
 
-  const userService = require("../api/schema/asignaturaService");
+  const userService = require("../api/schema/userService");
   userService.register(router, "/users");
 
-  const paisService = require("../api/schema/asignaturaService");
+  const paisService = require("../api/schema/paisService");
   paisService.register(router, "/paises");
 };
