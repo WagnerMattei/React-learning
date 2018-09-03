@@ -118,3 +118,7 @@ body{
 .tc-grey-A200{ color: #8c8c8c; }
 .tc-grey-A400{ color: #737373; }
 .tc-grey-A700{ color: #666666; }
+
+.loading{
+    position: absolute;
+}

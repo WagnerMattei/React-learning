@@ -9,7 +9,6 @@ const userSchema = new mongoose.Schema({
   email: { type: String, required: false },
   lastLogin: { type: Date, required: false },
   perfil: { type: String, required: false, enum: ['PROFESOR', 'DIRECTOR', 'ALUMNO'] },
-  perfil: { type: Date, required: false },
   isAtivo: { type: Boolean, required: false },
   isAdmin: { type: Boolean, default: false } 
 });
